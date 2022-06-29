@@ -1,0 +1,60 @@
+1. Inizializzare il progetto
+composer create-project --prefer-dist laravel/laravel:^7.0 blog
+
+2. Push su github
+
+3. Creare il database nel phpMyAdmin
+
+4. Modificare file .env
+
+5. Riavviare (oppure far partire) php artisan serve;
+
+6. Creo la migration per la tabella
+
+php artisan make:migration create_nometabella_table
+
+aggiungere tutti i campi della tabella all'interno della funzione up della migration
+
+php artisan migrate -> per creare la tabella all'interno del database
+
+controllo in phpMyAdmin che la tabella è stata veramente creata.
+
+7. Creo model
+
+php artisan make:model NomeModel (come tabella ma al singolare)
+
+8. Creo seeder
+
+php artisan make:seeder NometabellaTableSeeder
+
+Cancello il faker di f.zaninotto e inserisco quello di phpfaker 
+composer remove fzaninotto/faker
+composer require fakerphp/faker
+
+Importo Faker nel seeder: 
+use Faker\Generator as Faker;
+
+E lo inserisco anche come un parametro della funzione run
+
+Scrivo il codice del seeder nella funzione run per creare i record.
+
+Eseguo il seeder:
+php artisan db:seed --class=NomeClasseSeeder
+
+Controllo ne phpMyAdmin che ci sono i record all'interno della tabella
+
+9. Creo il controller e la funzione 
+php artisan make:controller HomepageController
+
+10. Nelle route aggiungo la route che si collega al controller
+
+Controllo che funziona (tramite dd nel controller);
+
+11. Creo la view e la metto nel return della funzione del controller
+Controllo che funziona
+
+12. Nel controller prelevo i dati della table, li passo alla view (controllo con dd che la variabile esiste) e dopo li visualizzo;
+
+13. Per inserire lo stile fare: 
+npm install
+npm run watch
